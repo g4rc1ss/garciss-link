@@ -10,11 +10,11 @@ builder.Services.AddEndpointsApiExplorer();
 
 
 builder.Services.AddDistributedMemoryCache();
-builder.Services.AddStackExchangeRedisCache(redis =>
-{
-    redis.Configuration = builder.Configuration.GetConnectionString("RedisConnection");
-    // redis.InstanceName = "GarcissLink";
-});
+// builder.Services.AddStackExchangeRedisCache(redis =>
+// {
+//     redis.Configuration = builder.Configuration.GetConnectionString("RedisConnection");
+//     // redis.InstanceName = "GarcissLink";
+// });
 builder.Services.AddSingleton<IConnectionMultiplexer, ConnectionMultiplexer>((x) =>
 {
     return ConnectionMultiplexer.Connect(builder.Configuration.GetConnectionString("RedisConnection"));
@@ -51,7 +51,8 @@ app.MapGet("/{path}", async (string path, IDistributedCache cache) =>
 
 app.MapPost("/", async (Link link, IDistributedCache cache) =>
 {
-    if (!Regex.IsMatch(link.Url, @"https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)"))
+    if (!Regex.IsMatch(link.Url,
+            @"https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)"))
     {
         return Results.BadRequest("Tienes que insertar una URL completa");
     }
@@ -60,7 +61,6 @@ app.MapPost("/", async (Link link, IDistributedCache cache) =>
 
     return Results.Ok();
 });
-
 
 
 app.UseSwagger();
