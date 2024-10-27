@@ -2,5 +2,5 @@ services:
   garcisslink:
     image: garciss/garcisslink:latest
     build:
-      context: ../
-      dockerfile: garcisslinkDockerfile
+      context: ../GarcissLink
+      dockerfile: Dockerfile
