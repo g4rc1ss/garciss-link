@@ -2,6 +2,7 @@ using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Distributed;
+using Microsoft.Extensions.Caching.Memory;
 using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -25,19 +26,23 @@ var app = builder.Build();
 
 app.MapGet("/health", () => "Healthy");
 
-app.MapGet("/", async (IConnectionMultiplexer connectionMultiplexer) =>
+// app.MapGet("/", async (IConnectionMultiplexer connectionMultiplexer) =>
+// {
+//     var keys = connectionMultiplexer
+//         .GetServers()[0]
+//         .KeysAsync(0);
+//
+//     var keysList = new List<string>();
+//     await foreach (var item in keys)
+//     {
+//         keysList.Add(item);
+//     }
+//
+//     return keysList;
+// });
+
+app.MapGet("/all", async (IMemoryCache memoryCache) =>
 {
-    var keys = connectionMultiplexer
-        .GetServers()[0]
-        .KeysAsync(0);
-
-    var keysList = new List<string>();
-    await foreach (var item in keys)
-    {
-        keysList.Add(item);
-    }
-
-    return keysList;
 });
 
 app.MapGet("/{path}", async (string path, IDistributedCache cache) =>
