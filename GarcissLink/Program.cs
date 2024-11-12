@@ -41,10 +41,6 @@ app.MapGet("/health", () => "Healthy");
 //     return keysList;
 // });
 
-app.MapGet("/all", async (IMemoryCache memoryCache) =>
-{
-});
-
 app.MapGet("/{path}", async (string path, IDistributedCache cache) =>
 {
     var result = await cache.GetStringAsync(path);
