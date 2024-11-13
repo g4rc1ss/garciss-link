@@ -1,5 +1,6 @@
 using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
+using GarcissLink.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Caching.Memory;
@@ -9,7 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSwaggerGen();
 builder.Services.AddEndpointsApiExplorer();
 
-
+builder.Services.AddHttpClient();
+builder.Services.AddHostedService<WebAlwaysUpOnRender>();
 builder.Services.AddDistributedMemoryCache();
 // builder.Services.AddStackExchangeRedisCache(redis =>
 // {
