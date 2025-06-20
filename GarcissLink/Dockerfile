@@ -1,5 +1,5 @@
 # Establece la imagen base
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 
 # Establece el directorio de trabajo
 WORKDIR /app
@@ -13,7 +13,7 @@ RUN dotnet publish -c Release -o out
 RUN dotnet dev-certs https -ep /app/cert.pfx -p password
 
 # Configura la imagen de producción
-FROM mcr.microsoft.com/dotnet/aspnet:8.0
+FROM mcr.microsoft.com/dotnet/aspnet:9.0
 WORKDIR /app
 COPY --from=build /app/out .
 COPY --from=build /app/cert.pfx .
