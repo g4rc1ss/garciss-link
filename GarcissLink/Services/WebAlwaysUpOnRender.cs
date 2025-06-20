@@ -2,8 +2,8 @@ namespace GarcissLink.Services;
 
 public class WebAlwaysUpOnRender(
     ILogger<WebAlwaysUpOnRender> logger,
-    IHttpClientFactory httpClientFactory)
-    : BackgroundService
+    IHttpClientFactory httpClientFactory
+) : BackgroundService
 {
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
@@ -11,9 +11,11 @@ public class WebAlwaysUpOnRender(
         {
             while (!stoppingToken.IsCancellationRequested)
             {
-                var httpClient = httpClientFactory.CreateClient();
+                HttpClient httpClient = httpClientFactory.CreateClient();
 
-                var response = await httpClient.GetAsync("https://garciss-link.onrender.com/swagger/index.html");
+                HttpResponseMessage response = await httpClient.GetAsync(
+                    "https://garciss-link.onrender.com/swagger/index.html"
+                );
 
                 await Task.Delay(TimeSpan.FromSeconds(30), stoppingToken);
             }
