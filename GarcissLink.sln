@@ -7,11 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GarcissLink", "GarcissLink\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9BD636F3-E937-4BF8-BD83-27046C3027B9}"
 	ProjectSection(SolutionItems) = preProject
-        Directory.Build.props = Directory.Build.props
-        .csharpierrc.json = .csharpierrc.json
-        .editorconfig = .editorconfig
+								Directory.Build.props = Directory.Build.props
+								.csharpierrc.json = .csharpierrc.json
+								.editorconfig = .editorconfig
 		Directory.Packages.props = Directory.Packages.props
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GarcissLink.AspireHost", "GarcissLink.AspireHost\GarcissLink.AspireHost.csproj", "{6958D554-D02D-4DD9-8DA5-901E84AEBC7B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,5 +28,9 @@ Global
 		{54C66703-957A-461F-AD69-805C4953105B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54C66703-957A-461F-AD69-805C4953105B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54C66703-957A-461F-AD69-805C4953105B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6958D554-D02D-4DD9-8DA5-901E84AEBC7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6958D554-D02D-4DD9-8DA5-901E84AEBC7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6958D554-D02D-4DD9-8DA5-901E84AEBC7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6958D554-D02D-4DD9-8DA5-901E84AEBC7B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

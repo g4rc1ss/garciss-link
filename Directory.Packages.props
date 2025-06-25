@@ -1,6 +1,7 @@
 <Project>
     <PropertyGroup>
         <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+        <CentralPackageFloatingVersionsEnabled>true</CentralPackageFloatingVersionsEnabled>
     </PropertyGroup>
 
     <ItemGroup>
@@ -9,5 +10,8 @@
         <PackageVersion Include="Microsoft.Data.Sqlite.Core" Version="9.0.6"/>
         <PackageVersion Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="9.0.6"/>
         <PackageVersion Include="Swashbuckle.AspNetCore" Version="9.0.1"/>
+
+        <PackageVersion Include="Aspire.Hosting.AppHost" Version="*"/>
+        <PackageVersion Include="Aspire.Hosting.Redis" Version="*"/>
     </ItemGroup>
 </Project>

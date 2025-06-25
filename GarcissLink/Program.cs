@@ -59,12 +59,7 @@ app.MapPost(
     "/",
     async (Link link, IDistributedCache cache) =>
     {
-        if (
-            !Regex.IsMatch(
-                link.Url,
-                @"https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)"
-            )
-        )
+        if (!MyRegex().IsMatch(link.Url))
         {
             return Results.BadRequest("Tienes que insertar una URL completa");
         }
@@ -80,3 +75,11 @@ app.UseSwaggerUI();
 await app.RunAsync();
 
 record Link(string Url, string ShortPath);
+
+partial class Program
+{
+    [GeneratedRegex(
+        @"https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)"
+    )]
+    private static partial Regex MyRegex();
+}
