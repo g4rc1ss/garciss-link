@@ -13,9 +13,9 @@ public class WebAlwaysUpOnRender(
             {
                 using HttpClient httpClient = httpClientFactory.CreateClient();
 
-                using HttpResponseMessage response = await httpClient.GetAsync(
-                    "https://garciss-link.onrender.com/swagger/index.html"
-                ).ConfigureAwait(false);
+                using HttpResponseMessage response = await httpClient
+                    .GetAsync("https://garciss-link.onrender.com/swagger/index.html", stoppingToken)
+                    .ConfigureAwait(false);
 
                 await Task.Delay(TimeSpan.FromSeconds(30), stoppingToken);
             }
