@@ -11,11 +11,11 @@ public class WebAlwaysUpOnRender(
         {
             while (!stoppingToken.IsCancellationRequested)
             {
-                HttpClient httpClient = httpClientFactory.CreateClient();
+                using HttpClient httpClient = httpClientFactory.CreateClient();
 
-                HttpResponseMessage response = await httpClient.GetAsync(
+                using HttpResponseMessage response = await httpClient.GetAsync(
                     "https://garciss-link.onrender.com/swagger/index.html"
-                );
+                ).ConfigureAwait(false);
 
                 await Task.Delay(TimeSpan.FromSeconds(30), stoppingToken);
             }
